@@ -3,15 +3,16 @@ class ClientWorkoutsController < ApplicationController
 
   # GET /client_workouts
   # GET /client_workouts.json
-  def index
+    def index
     #@client_workouts = ClientWorkout.all
-    if params[:search]
-        @client_workouts = ClientWorkout.search(params[:search]).order("created_at DESC")
-    else
-        @client_workouts = ClientWorkout.all.order("created_at DESC")
-    end
 
-  end
+
+        if params[:search]
+            @client_workouts = ClientWorkout.search(params[:search]).order("created_at DESC")
+        else
+            @client_workouts = ClientWorkout.all.order("created_at DESC")
+        end
+    end
 
   # GET /client_workouts/1
   # GET /client_workouts/1.json
