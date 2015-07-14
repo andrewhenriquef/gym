@@ -4,12 +4,20 @@ class ClientWorkoutsController < ApplicationController
   # GET /client_workouts
   # GET /client_workouts.json
   def index
-    @client_workouts = ClientWorkout.all
+    #@client_workouts = ClientWorkout.all
+    if params[:search]
+        @client_workouts = ClientWorkout.search(params[:search]).order("created_at DESC")
+    else
+        @client_workouts = ClientWorkout.all.order("created_at DESC")
+    end
+
   end
 
   # GET /client_workouts/1
   # GET /client_workouts/1.json
   def show
+      
+      #@client_workout = ClientWorkout.find(params[:id])
   end
 
   # GET /client_workouts/new
@@ -61,8 +69,16 @@ class ClientWorkoutsController < ApplicationController
     end
   end
 
+    def find
+        @client_workouts = ClienteWorkout.find_all_by_client_name(params[:search])
+ 
+    end
+
+    
+
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_client_workout
       @client_workout = ClientWorkout.find(params[:id])
     end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :client_workouts
+    delete 'client_workout/:id/delete', :controller =>'client_workouts', :action => 'destroy'
+    #get '/client_workouts/find' => 'client_workouts#find'
+    #post "/client_workouts/find", :controller => 'client_workouts', :action => 'find'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
