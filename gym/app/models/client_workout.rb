@@ -1,5 +1,9 @@
 class ClientWorkout < ActiveRecord::Base
 
+    validates :paid_amount, numericality: true
+    validates :client_name, presence: true
+    validates :trainer, presence: true
+    
     def self.search(search)
         
         key = "%#{search}%"
